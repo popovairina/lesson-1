@@ -2,23 +2,25 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     let budget = +prompt('Ваш бюджет на месяц?', ''),
-        name = prompt('Название вашего магазина?', ''),
-        mainList = {
+        date = prompt('Введите дату в формате YYYY-MM-DD', 'YYYY-MM-DD'),
+        appData = {
           budget: budget,
-            name: name,
-            shopGoods: [],
-            employers: {},
-            open: true
+            timeData: date,
+            expenses: {},
+            optionalExpenses: {},
+            income: [],
+            savings: false
         };
-    for (let i = 0; i<=2; i++) {
-        mainList.shopGoods[i] = prompt('Какой тип товаров будем продавать?', '');
+    for (let i = 0; i < 2; i++) {
+        let expensesItem =  prompt('Введите обязательную статью расходов в этом месяце', ''),
+            expensesCost =  +prompt('Во сколько обойдется?', '');
+        appData.expenses[expensesItem] = expensesCost;
     }
 
     console.log(budget);
-    console.log(name);
-    console.log(mainList);
+    console.log(appData);
 
-    let budgetMonth = mainList.budget;
+    let budgetMonth = appData.budget;
     document.getElementById('budgetMonth').value = budgetMonth / 30;
 
 });
